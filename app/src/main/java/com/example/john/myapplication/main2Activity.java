@@ -13,8 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class main2Activity extends AppCompatActivity {
 
     private ListView lv2;
@@ -27,23 +25,21 @@ public class main2Activity extends AppCompatActivity {
         Intent intent = getIntent();
 
         String stringOne = intent.getStringExtra("Title");
-        final ArrayList<String> arrayOne = intent.getStringArrayListExtra("list");
+//        final ArrayList<String> arrayOne = intent.getStringArrayListExtra("list");
 
         TextView tv = (TextView) findViewById(R.id.textView);
         TextView tv2 = (TextView) findViewById(R.id.textView2);
         lv2 = (ListView) findViewById(R.id.listview2);
 
-        arrayOne.remove("");
-        arrayOne.add("test1");
-        arrayOne.add("test2");
+        listStorage.toDoArray.remove("");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                arrayOne );
+                listStorage.toDoArray );
 
         lv2.setAdapter(arrayAdapter);
         tv.setText(stringOne);
-        tv2.setText(arrayOne.toString());
+        tv2.setText(listStorage.toDoArray.toString());
 
         Toast.makeText(this,
                 "Test", Toast.LENGTH_SHORT).show();
@@ -60,7 +56,9 @@ public class main2Activity extends AppCompatActivity {
 
                 Log.e("cool", "variable is " + sTextFromET2);
 
-                arrayOne.add(sTextFromET2);
+//                listStorage.setTester(sTextFromET2);
+
+                listStorage.toDoArray.add(sTextFromET2);
                 et2.setText("");
                 arrayAdapter.notifyDataSetChanged();
 
@@ -78,7 +76,7 @@ public class main2Activity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                arrayOne.remove(position);
+                listStorage.toDoArray.remove(position);
                 arrayAdapter.notifyDataSetChanged();
 
                 Toast.makeText(main2Activity.this,
