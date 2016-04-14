@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 
@@ -21,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayAdapter<String> mAdapter;
 
-    String[] toDoArray = new String[];
+    ArrayList<String> toDoArray = new ArrayList<>();
+
+
 
 
     @Override
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         strList = new LinkedList<>();
+
 
         mAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,strList);
 
@@ -55,10 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,
                         "Item Added", Toast.LENGTH_SHORT).show();
 
-                //Create new array here
-
-
-
+               //add to array here to placehold
+                toDoArray.add("");
+;
 
 
 
@@ -84,17 +88,36 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
+//maybe split the array?
+
+
+//convert placeholder split array
+                String strArray[] = toDoArray.get(position).split("");
+                //convert to arraylist
+
+                ArrayList<String> arraylist = new ArrayList<String>(Arrays.asList(strArray));
 
                 String str1 = strList.get(position);
 
+                //converting 2nd arraylist to an array to prepare to intent?
+
+                String list2[] = new String[toDoArray.size()];
+
+                //storing new array into variable
+
+                list2 = toDoArray.toArray(list2);
+
+                //console logging array to string conversion
+
+                Log.e("cool", Arrays.toString(strArray));
 
 
-
-//                long id will match the array of the other to do array...or position?
+//              long id will match the array of the other to do array...or position?
 
                 Intent intent = new Intent(MainActivity.this, main2Activity.class);
                 intent.putExtra("Title", str1);
-
+                //send off arraylist
+                intent.putStringArrayListExtra("list", arraylist);
                 startActivity(intent);
 
             }
