@@ -9,10 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.john.myapplication.MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="To Do List"
+        android:textAlignment="center"
+        />
+
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        ></ListView>
     <EditText
         android:layout_width="220dp"
         android:layout_height="30dp"
@@ -35,6 +44,8 @@
         android:tint="@android:color/white"
         android:layout_margin="16dp"
         android:src="@android:drawable/ic_input_add" />
+
+
 
 
 </RelativeLayout>

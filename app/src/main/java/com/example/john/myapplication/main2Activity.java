@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class main2Activity extends AppCompatActivity {
@@ -24,22 +23,22 @@ public class main2Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String stringOne = intent.getStringExtra("Title");
+        final int position = intent.getIntExtra("position", -1);
 //        final ArrayList<String> arrayOne = intent.getStringArrayListExtra("list");
 
-        TextView tv = (TextView) findViewById(R.id.textView);
-        TextView tv2 = (TextView) findViewById(R.id.textView2);
+//        TextView tv = (TextView) findViewById(R.id.textView);
+//        TextView tv2 = (TextView) findViewById(R.id.textView2);
         lv2 = (ListView) findViewById(R.id.listview2);
 
-        listStorage.toDoArray.remove("");
+
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                listStorage.toDoArray );
+                listStorage.arrayOfLists.get(position));
 
         lv2.setAdapter(arrayAdapter);
-        tv.setText(stringOne);
-        tv2.setText(listStorage.toDoArray.toString());
+//        tv.setText(stringOne);
+//        tv2.setText(listStorage.toDoArray.toString());
 
         Toast.makeText(this,
                 "Test", Toast.LENGTH_SHORT).show();
@@ -57,8 +56,9 @@ public class main2Activity extends AppCompatActivity {
                 Log.e("cool", "variable is " + sTextFromET2);
 
 //                listStorage.setTester(sTextFromET2);
+                listStorage.arrayOfLists.get(position).add(sTextFromET2);
+//                listStorage.arrayOfLists;
 
-                listStorage.toDoArray.add(sTextFromET2);
                 et2.setText("");
                 arrayAdapter.notifyDataSetChanged();
 
@@ -76,7 +76,7 @@ public class main2Activity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                listStorage.toDoArray.remove(position);
+                listStorage.arrayOfLists.get(position).remove(position);
                 arrayAdapter.notifyDataSetChanged();
 
                 Toast.makeText(main2Activity.this,

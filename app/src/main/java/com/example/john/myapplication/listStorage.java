@@ -7,13 +7,18 @@ import java.util.ArrayList;
  */
 public class listStorage {
 
-   static ArrayList<String> toDoArray = new ArrayList<>();
+    static ArrayList<ArrayList<String>> arrayOfLists = new ArrayList<ArrayList<String>>();
+    static ArrayList<String> toDoArray = new ArrayList<String>();
+
 
 
 //    static String tester = "tester";
 
-    public static String setItemToArrayList(String thing){
-toDoArray.add(thing);
-        return toDoArray.get(0);
-    }
+//    public static ArrayList listName(String thing){
+//
+//        toDoArray.add(thing);
+//
+//        return toDoArray;
+//
+//    }
 }
