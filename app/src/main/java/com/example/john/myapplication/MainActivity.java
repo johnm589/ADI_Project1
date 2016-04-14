@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayAdapter<String> mAdapter;
 
+    String[] toDoArray = new String[];
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this,
                         "Item Added", Toast.LENGTH_SHORT).show();
+
+                //Create new array here
+
+
+
+
+
+
+                //Below in the intents send both the string name and the entire array over
+
             }
         });
 
@@ -70,19 +83,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                String str1 = strList.get(position);
 
+
+                String str1 = strList.get(position);
+
+
+
+
+//                long id will match the array of the other to do array...or position?
 
                 Intent intent = new Intent(MainActivity.this, main2Activity.class);
-                intent.putExtra("Test", "Whatever");
+                intent.putExtra("Title", str1);
 
                 startActivity(intent);
 
-                Toast.makeText(MainActivity.this,
-                        "Test", Toast.LENGTH_SHORT).show();
-
             }
+
+
         });
+
+
 
     }
 }

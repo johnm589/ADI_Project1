@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class main2Activity extends AppCompatActivity {
 
@@ -15,11 +16,14 @@ public class main2Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String stringOne = intent.getStringExtra("test");
+        String stringOne = intent.getStringExtra("Title");
 
         TextView tv = (TextView) findViewById(R.id.textView);
 
         tv.setText(stringOne);
+
+        Toast.makeText(this,
+                "Test", Toast.LENGTH_SHORT).show();
 
     }
 }
