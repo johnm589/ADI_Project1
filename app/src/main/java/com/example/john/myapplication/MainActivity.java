@@ -17,7 +17,16 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
+
+    public static class Storage {
+
+
+        String tester = "tester";
+
+    }
 
     LinkedList<String> strList;
 
@@ -34,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         strList = new LinkedList<>();
-
 
         mAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,strList);
 
@@ -55,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("cool", "variable is " + sTextFromET);
 
                 strList.add(sTextFromET);
+                et1.setText("");
                 mAdapter.notifyDataSetChanged();
 
                 Toast.makeText(MainActivity.this,
@@ -111,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.e("cool", Arrays.toString(strArray));
 
-
+                Log.e("cool", tester);
 //              long id will match the array of the other to do array...or position?
 
                 Intent intent = new Intent(MainActivity.this, main2Activity.class);

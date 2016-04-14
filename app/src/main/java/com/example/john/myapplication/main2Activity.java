@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,7 +34,8 @@ public class main2Activity extends AppCompatActivity {
         lv2 = (ListView) findViewById(R.id.listview2);
 
         arrayOne.remove("");
-
+        arrayOne.add("test1");
+        arrayOne.add("test2");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -46,7 +48,9 @@ public class main2Activity extends AppCompatActivity {
         Toast.makeText(this,
                 "Test", Toast.LENGTH_SHORT).show();
 
-        FloatingActionButton fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+
+
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +61,7 @@ public class main2Activity extends AppCompatActivity {
                 Log.e("cool", "variable is " + sTextFromET2);
 
                 arrayOne.add(sTextFromET2);
+                et2.setText("");
                 arrayAdapter.notifyDataSetChanged();
 
                 Toast.makeText(main2Activity.this,
@@ -69,6 +74,23 @@ public class main2Activity extends AppCompatActivity {
 
             }
         });
+        lv2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                arrayOne.remove(position);
+                arrayAdapter.notifyDataSetChanged();
+
+                Toast.makeText(main2Activity.this,
+                        "Item Deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+
 
     }
+//    @Overridedf
+//    public void onBackPressed() {
+//    }
 }
