@@ -35,6 +35,7 @@ public class main2Activity extends AppCompatActivity {
         //Changes Title
         tv.setText(listStorage.toDoArray.get(position1));
 
+        //array adapter
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
@@ -48,11 +49,16 @@ public class main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //set up variables for edit text and grab info
+
                 EditText et2 = (EditText) findViewById(R.id.editText2);
                 String sTextFromET2 = et2.getText().toString();
 
+                //git position in array of arrays and add text from et2
+
                 listStorage.arrayOfLists.get(position1).add(sTextFromET2);
 
+                //clear + update dataset
                 et2.setText("");
                 arrayAdapter.notifyDataSetChanged();
 
@@ -64,6 +70,8 @@ public class main2Activity extends AppCompatActivity {
         lv2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //delete stuff
 
                 listStorage.arrayOfLists.get(position1).remove(position);
                 arrayAdapter.notifyDataSetChanged();
