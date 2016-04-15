@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
                 listStorage.toDoArray.remove(position);
+                listStorage.arrayOfLists.remove(position);
                 mAdapter.notifyDataSetChanged();
 
                 Toast.makeText(MainActivity.this,

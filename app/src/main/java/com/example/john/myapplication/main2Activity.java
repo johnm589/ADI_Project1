@@ -43,11 +43,6 @@ public class main2Activity extends AppCompatActivity {
 
         lv2.setAdapter(arrayAdapter);
 
-        Toast.makeText(this,
-                "Test", Toast.LENGTH_SHORT).show();
-
-
-
         FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +73,6 @@ public class main2Activity extends AppCompatActivity {
                 return true;
             }
         });
-
-
 
     }
 }

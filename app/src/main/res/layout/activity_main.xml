@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.john.myapplication.MainActivity">
+    tools:context="com.example.john.myapplication.MainActivity"
+    android:background="#B0E2FF"
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -32,7 +34,7 @@
         android:layout_gravity="bottom|end"
         android:layout_alignParentBottom="true"
         android:inputType="text"
-        android:background="@android:color/darker_gray"
+        android:background="#fff"
         />
 
     <android.support.design.widget.FloatingActionButton
