@@ -24,7 +24,7 @@ public class main2Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        final int position = intent.getIntExtra("position", -1);
+        final int position1 = intent.getIntExtra("position", -1);
 
 
         //Assigns views to variables
@@ -33,13 +33,13 @@ public class main2Activity extends AppCompatActivity {
 
 
         //Changes Title
-        tv.setText(listStorage.toDoArray.get(position));
+        tv.setText(listStorage.toDoArray.get(position1));
 
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                listStorage.arrayOfLists.get(position));
+                listStorage.arrayOfLists.get(position1));
 
         lv2.setAdapter(arrayAdapter);
 
@@ -56,7 +56,7 @@ public class main2Activity extends AppCompatActivity {
                 EditText et2 = (EditText) findViewById(R.id.editText2);
                 String sTextFromET2 = et2.getText().toString();
 
-                listStorage.arrayOfLists.get(position).add(sTextFromET2);
+                listStorage.arrayOfLists.get(position1).add(sTextFromET2);
 
                 et2.setText("");
                 arrayAdapter.notifyDataSetChanged();
@@ -70,7 +70,7 @@ public class main2Activity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                listStorage.arrayOfLists.get(position).remove(position);
+                listStorage.arrayOfLists.get(position1).remove(position);
                 arrayAdapter.notifyDataSetChanged();
 
                 Toast.makeText(main2Activity.this,

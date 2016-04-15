@@ -44,7 +44,7 @@
         android:layout_marginTop="30dp"
         ></ListView>
     <EditText
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="30dp"
         android:layout_margin="20dp"
         android:hint="EnterText"
