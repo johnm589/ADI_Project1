@@ -4,17 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class main2Activity extends AppCompatActivity {
 
     private ListView lv2;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +25,23 @@ public class main2Activity extends AppCompatActivity {
         Intent intent = getIntent();
 
         final int position = intent.getIntExtra("position", -1);
-//        final ArrayList<String> arrayOne = intent.getStringArrayListExtra("list");
 
-//        TextView tv = (TextView) findViewById(R.id.textView);
-//        TextView tv2 = (TextView) findViewById(R.id.textView2);
+
+        //Assigns views to variables
         lv2 = (ListView) findViewById(R.id.listview2);
+        tv = (TextView) findViewById(R.id.title);
 
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        //Changes Title
+        tv.setText(listStorage.toDoArray.get(position));
+
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 listStorage.arrayOfLists.get(position));
 
         lv2.setAdapter(arrayAdapter);
-//        tv.setText(stringOne);
-//        tv2.setText(listStorage.toDoArray.toString());
 
         Toast.makeText(this,
                 "Test", Toast.LENGTH_SHORT).show();
@@ -53,22 +56,13 @@ public class main2Activity extends AppCompatActivity {
                 EditText et2 = (EditText) findViewById(R.id.editText2);
                 String sTextFromET2 = et2.getText().toString();
 
-                Log.e("cool", "variable is " + sTextFromET2);
-
-//                listStorage.setTester(sTextFromET2);
                 listStorage.arrayOfLists.get(position).add(sTextFromET2);
-//                listStorage.arrayOfLists;
 
                 et2.setText("");
                 arrayAdapter.notifyDataSetChanged();
 
                 Toast.makeText(main2Activity.this,
                         "Item Added", Toast.LENGTH_SHORT).show();
-
-                //add to array here to placehold
-
-
-                //Below in the intents send both the string name and the entire array over
 
             }
         });
@@ -88,7 +82,4 @@ public class main2Activity extends AppCompatActivity {
 
 
     }
-//    @Overridedf
-//    public void onBackPressed() {
-//    }
 }

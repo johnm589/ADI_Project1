@@ -17,12 +17,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
-//    ArrayList<String> toDoArray = new ArrayList<>();
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,23 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
                 listStorage.arrayOfLists.add(listItems);
 
-
-//                listStorage.toDoArray.get(listStorage.toDoArray.size()-1);
-
                 et1.setText("");
 
                 mAdapter.notifyDataSetChanged();
 
                 Toast.makeText(MainActivity.this,
                         "Item Added", Toast.LENGTH_SHORT).show();
-
-               //add to array here to placehold
-
-
-
-
-                //Below in the intents send both the string name and the entire array over
-
             }
         });
 
@@ -92,46 +75,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-//maybe split the array?
-
-
-//convert placeholder split array
-//                String strArray[] = toDoArray.get(position).split("");
-                //convert to arraylist
-
-//                ArrayList<String> arraylist = new ArrayList<String>(Arrays.asList(strArray));
-
-//                String str1 = strList.get(position);
-
-                //converting 2nd arraylist to an array to prepare to intent?
-
-//                String list2[] = new String[toDoArray.size()];
-
-                //storing new array into variable
-
-//                list2 = toDoArray.toArray(list2);
-
-                //console logging array to string conversion
-
-//                Log.e("cool", Arrays.toString(strArray));
-
-//              long id will match the array of the other to do array...or position?
-
                 Intent intent = new Intent(MainActivity.this, main2Activity.class);
-//                intent.putExtra("Title", str1);
-                //send off arraylist
-//                intent.putStringArrayListExtra("list", listStorage.toDoArray);
                 intent.putExtra("position", position);
 
                 startActivity(intent);
-
             }
-
-
         });
-
-
 
     }
 }
